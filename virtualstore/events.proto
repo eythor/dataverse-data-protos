@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package data.virtualstore.event;
+
+// option go_package = "github.com/ccpgames/data-proto-go/generated/data/virtualstore/event";
+
+message ItemBought {
+  string source_user_id = 1;
+  int32 amount = 2;
+
+  // do we even care? Does the domain from which the event comes from tell us this?
+  string money_type = 3; // plex, gems, monopoly money
+}
+
+message ItemSold {
+  string source_user_id = 1;
+  int32 amount = 2;
+
+  // do we even care? Does the domain from which the event comes from tell us this?
+  string money_type = 3; // plex, gems, monopoly money
+}
+

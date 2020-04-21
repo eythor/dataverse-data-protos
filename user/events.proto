@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package data.user.event;
+
+// option go_package = "github.com/ccpgames/data-proto-go/generated/data/user/event";
+
+
+message Created {
+  // should we create a message type for user identifiers? Maybe atlas users will have uuids, while eve has int32, while something else has int64?
+  string source_id = 1; // the ID of a user in source system. i.e. the user_id in TQ for a user in eve TQ
+  string source_customer_id = 2;  // This is unrealistic. But for fun, maybe master accounts will happen :) 
+}
+
+message Disabled {
+  string source_id = 1; // the ID of a user in source system. i.e. the user_id in TQ for a user in eve TQ
+}
+
+message LoggedIn {
+  string source_id = 1;
+  string session_id = 2; // something unique to identify a user session. Actually, maybe this is something we could/should generate ourselves?
+}
+
+message LoggedOut {
+  string source_id = 1;
+  string session_id = 2;
+}

@@ -1,0 +1,71 @@
+message Source {
+  string application = 1;
+  string tenant = 2;
+}
+
+
+// super general Event wrapper a la eve-proto
+
+message Event {
+  google.protobuf.Timestamp timestamp = 1;
+  string uuid = 2;
+  Source source = 3;
+  google.protobuf.Any payload = 4;
+}
+
+
+// OR
+
+// a tiny bit more specific wrapper per 'domain'
+
+message Customer {
+  google.protobuf.Timestamp timestamp = 1;
+  string uuid = 2;
+  Source source = 3;
+  google.protobuf.Any payload = 4;
+  // this is the only change from above
+  string source_customer_id = 5;
+}
+
+message User {
+  google.protobuf.Timestamp timestamp = 1;
+  string uuid = 2;
+  Source source = 3;
+  google.protobuf.Any payload = 4;
+
+  // this is the only change from above
+  string source_user_id = 5;
+  string source_session_id = 6
+}
+
+message Character {
+  google.protobuf.Timestamp timestamp = 1;
+  string uuid = 2;
+  Source source = 3;
+
+  // this is the only change from above
+  string source_character_id = 4;
+  string source_session_id = 5;
+
+  google.protobuf.Any event = 6;
+}
+
+// Need Something that enforces this happens on a 'feature level'
+message FeatureEngaged {
+  google.protobuf.Timestamp timestamp = 1;
+  string uuid = 2;
+  Source source = 3;
+  // I don't know
+  // feature_name could be type_url
+  google.protobuf.Any feature = 4;
+}
+
+// Need Something that enforces this happens on a 'feature level'
+message FeatureDisengaged {
+  google.protobuf.Timestamp timestamp = 1;
+  string uuid = 2;
+  Source source = 3;
+  // feature_name could be type_url
+  google.protobuf.Any feature = 4;
+}
+

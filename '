@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package data.store.event;
+
+// option go_package = "github.com/ccpgames/data-proto-go/generated/data/store/event";
+
+
+// I don't know what to call this
+// 'entitlements' in eve
+message SubscriptionPurchased {
+  string source_user_id = 1; // or customer?
+  google.protobuf.Timestamp from = 2;
+  google.protobuf.Timestamp to = 3;
+  string descriptor = 4;
+  int32 price = 5;
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package data.customer.event;
+
+// option go_package = "github.com/ccpgames/data-proto-go/generated/data/customer/event";
+
+
+
+message Customer.Created {
+  string source_id = 1; // the ID of a user in source system. i.e. the user_id in TQ for a user in eve TQ
+  string email = 2;
+}
+
+message Customer.Disabled {
+  string source_id = 1; // the ID of a user in source system. i.e. the user_id in TQ for a user in eve TQ
+}

@@ -1,0 +1,21 @@
+message Created {
+  string source_character_id = 1;
+  string source_user_id = 2;
+}
+
+message Deleted {
+  string source_character_id = 1;
+  string source_user_id = 2;
+}
+
+message Selected {
+  string source_character_id = 1;
+  string source_user_id = 2;
+}
+
+message Transferred {
+  string source_character_id = 1;
+  string previous_user_id = 2;
+  string new_user_id = 3;
+}
+
